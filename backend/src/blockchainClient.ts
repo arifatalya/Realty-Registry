@@ -2,8 +2,8 @@ import * as fs from "fs";
 import * as path from "path";
 import {Gateway, Wallets, Contract} from "fabric-network";
 
-const walletPath = path.resolve(__dirname, '..', 'connection-org1.json');
-const ccpPath = path.resolve(__dirname, '..', 'wallet');
+const ccpPath = path.resolve(__dirname, '..', 'connection-org1.json');
+const walletPath = path.resolve(__dirname, '..', 'wallet');
 
 const CHANNEL_NAME = 'mychannel';
 const CHAINCODE_NAME = 'propertyregistry';
