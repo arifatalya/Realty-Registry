@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import realtyRouter from "./routes/realtyRoute";
+import registrarRouter from "./routes/registrarRoute";
+import authorityRouter from "./routes/authorityRoute";
 import cors from "cors"; // Later
 
 dotenv.config();
@@ -10,7 +11,8 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use('/realty', realtyRouter);
+app.use('/registrar', registrarRouter);
+app.use('/authority', authorityRouter);
 
 app.get('/', (req, res) => {
     res.send('API Working');
