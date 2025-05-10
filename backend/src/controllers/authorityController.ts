@@ -35,7 +35,7 @@ const transferProperty = async (req: Request, res: Response) => {
         gateway.disconnect();
 
         res.json({
-            message: `Property ${property_id} has been transferred ${newOwner}`
+            message: `Property ${property_id} has been transferred to ${newOwner}`
         })
     } catch (error: any) {
         console.error("Error occurred: ", error);
