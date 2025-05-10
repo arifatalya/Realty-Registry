@@ -2,8 +2,8 @@ import * as fs from "fs";
 import * as path from "path";
 import { Gateway, Wallets, Contract } from "fabric-network";
 
-const ccpPath = path.resolve(__dirname, '..', 'connection-org2.json');
-const walletPath = path.resolve(__dirname, '..', 'wallet');
+const ccpPath = path.resolve(__dirname, '..', 'local_fabric', 'connection-org2.json');
+const walletPath = path.resolve(__dirname , '..', 'local_fabric', 'wallet');
 const identityLabel = 'User1@org2.example.com';
 
 const CHANNEL_NAME = 'mychannel';
