@@ -1,0 +1,54 @@
+.property-table-wrapper {
+    width: 100%;
+}
+
+.property-table {
+    display: block;
+    overflow: hidden;
+    overflow-x: auto;
+    margin: 0 auto;
+    width: 100em;
+    max-width: 80%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-radius: 10px;
+    white-space: nowrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.property-table thead {
+    background-color: #FEFEFE;
+    color: #333;
+}
+
+.property-table th, .property-table td {
+    padding: 0.8rem;
+}
+
+.property-table td {
+    border-top: 1px solid #EAEAEA;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.property-table tbody tr:hover {
+    background-color: #F6F6F6;
+}
+
+.expand-location {
+    width: 100%;
+}
+
+.label {
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    color: #F6F6F6;
+}
+
+.label-success {
+    background-color: #34bb46;
+}
+
+.label-pending {
+    background-color: #ffc107;
+}
