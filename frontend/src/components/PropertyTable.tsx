@@ -17,7 +17,7 @@ export default function PropertyTable(props: PropertyTableProps) {
     const [property, setProperty] = useState<PropertyTableProps[]>([]);
 
     useEffect(() => {
-        fetch('https://localhost:4000/registrar').then(res => res.json()).then(data => setProperty(data)).catch(err => console.log("Fetching data failed: ", err));
+        fetch('https://localhost:3000/registrar').then(res => res.json()).then(data => setProperty(data)).catch(err => console.log("Fetching data failed: ", err));
     }, []);
 
     return (
