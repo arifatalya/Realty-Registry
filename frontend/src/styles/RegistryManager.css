@@ -11,19 +11,19 @@
     background-size: cover;
     background-position: center;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
 }
 
 .registry-page {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     margin: 0;
     min-height: 100vh;
-    width: 1100px;
-    background-color: #131321;
+    width: 1000vh;
+    background-color: #131010;
     padding: 20px;
 }
 
@@ -31,7 +31,7 @@
     font-size: 2.5rem;
     font-weight: bold;
     color: #ffffff;
-    margin: 0 0 30px 200px;
+    margin: 0 0 30px 0;
     text-align: start;
 }
 
@@ -42,7 +42,7 @@
     width: 550px;
     max-width: 50vw;
     padding: 40px 20px 20px 20px;
-    margin: 0 0 0 200px;
+    margin: 0;
     background-color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -66,14 +66,14 @@
 }
 
 .form-group input:focus {
-    border-color: #2E3A99;
-    box-shadow: 0 0 4px rgba(46, 58, 153, 0.5);
+    border-color: #131010;
+    box-shadow: 0 0 4px rgb(19, 16, 16);
 }
 
 .form-group label {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #2E3A99;
+    color: #121111;
     margin-bottom: 8px;
     display: block;
     letter-spacing: 1px;
@@ -85,7 +85,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
-    background-color: #2E3A99;
+    background-color: #121111;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -93,11 +93,11 @@
 }
 
 .registry-form button:hover {
-    background-color: #2C2480;
+    background-color: #808083;
 }
 
 .registry-table {
-    margin: 40px 0 0 200px;
+    margin: 40px 0 0 0;
     width: calc(100% - 200px);
     border-collapse: collapse;
     background-color: #fff;
@@ -127,7 +127,7 @@
     margin-right: 8px;
     padding: 6px 12px;
     font-size: 0.9rem;
-    background-color: #2E3A99;
+    background-color: #121111;
     color: white;
     border: none;
     border-radius: 6px;
@@ -136,7 +136,7 @@
 }
 
 .registry-table button:hover {
-    background-color: #1f2677;
+    background-color: #121111;
 }
 
 @media (max-width: 768px) {
