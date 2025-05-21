@@ -1,10 +1,8 @@
-'use client'
+'use client';
 
-import {useEffect, useState, ChangeEvent, FormEvent} from "react";
+import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import "../styles/RegistryManager.css";
 import axios from "axios";
-import {toast, ToastContainer} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 interface Property {
     id: string;
@@ -40,10 +38,10 @@ export default function RegistryManager() {
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        fetch("/registrar")
+        fetch('http://localhost:3000/registrar')
             .then((res) => res.json())
             .then((data) => setProperties(data))
-            .catch(() => toast.error("Failed to load properties."));
+            .catch(() => alert("Failed to load properties."));
     }, []);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +51,7 @@ export default function RegistryManager() {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        const endpoint = editMode ? `/registrar/${form.property_id}` : "/registrar";
+        const endpoint = editMode ? `http://localhost:3000/registrar${form.property_id}` : 'http://localhost:3000/registrar';
         const method = editMode ? "PUT" : "POST";
 
         try {
@@ -67,13 +65,13 @@ export default function RegistryManager() {
                     marketValue: Number(form.marketValue),
                 },
             });
-            toast.success(response.data.message);
+            alert(response.data.message);
             setForm({ property_id: "", owner: "", propertyType: "", location: "", size: "", marketValue: "" });
             setEditMode(false);
-            const updated = await fetch("/registrar").then((res) => res.json());
+            const updated = await fetch('http://localhost:3000/registrar').then((res) => res.json());
             setProperties(updated);
         } catch {
-            toast.error("Error submitting property.");
+            alert("Error submitting property.");
         } finally {
             setLoading(false);
         }
@@ -95,19 +93,18 @@ export default function RegistryManager() {
         if (!confirm(`Are you sure you want to delete ${id}?`)) return;
 
         try {
-            const res = await axios.delete(`/registrar/${id}`);
-            toast.success(res.data.message);
-            const updated = await fetch("/registrar").then((res) => res.json());
+            const res = await axios.delete(`http://localhost:3000/registrar/${id}`);
+            alert(res.data.message);
+            const updated = await fetch('http://localhost:3000/registrar').then((res) => res.json());
             setProperties(updated);
         } catch {
-            toast.error("Failed to delete.");
+            alert("Failed to delete.");
         }
     };
 
     return (
         <div className="registry-page-container">
             <div className="registry-page">
-                <ToastContainer />
                 <h1>{editMode ? "Update Registry" : "Register Property"}</h1>
                 <form className="registry-form" onSubmit={handleSubmit}>
                     <div className="form-group">
