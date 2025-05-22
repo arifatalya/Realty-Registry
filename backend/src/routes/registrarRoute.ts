@@ -4,9 +4,9 @@ import {getAllProperties, getPropertyById, registerProperty, updateProperty, del
 const registrarRouter = express.Router();
 
 registrarRouter.get("/", getAllProperties);
-registrarRouter.get('/:id', getPropertyById);
+registrarRouter.get('/:property_id', getPropertyById);
 registrarRouter.post('/', registerProperty);
-registrarRouter.put('/:id', updateProperty);
-registrarRouter.delete('/:id', deleteProperty);
+registrarRouter.put('/:property_id', updateProperty);
+registrarRouter.delete('/:property_id', deleteProperty);
 
 export default registrarRouter;

@@ -14,7 +14,7 @@ const getAllProperties = async(req: Request, res: Response) => {
 }
 
 const getPropertyById = async (req: Request, res: Response) => {
-    const property_id = req.params.id;
+    const property_id = req.params.property_id;
     try {
         const {contract, gateway} = await getContract();
         const result = await contract.evaluateTransaction('ReadProperty', property_id);
@@ -51,7 +51,7 @@ const registerProperty = async (req: Request, res: Response) => {
 }
 
 const updateProperty = async (req: Request, res: Response) => {
-    const property_id = req.params.id;
+    const property_id = req.params.property_id;
     const {propertyType, location, size, marketValue} = req.body;
     try {
         const {contract, gateway} = await getContract();
@@ -75,7 +75,7 @@ const updateProperty = async (req: Request, res: Response) => {
 }
 
 const deleteProperty = async (req: Request, res: Response) => {
-    const property_id = req.params.id;
+    const property_id = req.params.property_id;
     try {
         const {contract, gateway} = await getContract();
         await contract.submitTransaction('DeleteProperty', property_id);

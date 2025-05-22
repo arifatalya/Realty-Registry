@@ -2,7 +2,7 @@
 
 import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import "../styles/RegistryManager.css";
-import {NavbarReg} from "@/components/NavbarReg";
+import { Navbar } from "@/components/Navbar";
 import axios from "axios";
 
 interface Property {
@@ -37,6 +37,7 @@ export default function RegistryManager() {
     });
     const [editMode, setEditMode] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
+    const [editTargetId, setEditTargetId] = useState<string | null>(null);
 
     useEffect(() => {
         fetch('http://localhost:3000/registrar')
@@ -52,7 +53,11 @@ export default function RegistryManager() {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        const endpoint = editMode ? `http://localhost:3000/registrar${form.property_id}` : 'http://localhost:3000/registrar';
+
+        const endpoint = editMode && editTargetId
+            ? `http://localhost:3000/registrar/${editTargetId}`
+            : 'http://localhost:3000/registrar';
+
         const method = editMode ? "PUT" : "POST";
 
         try {
@@ -66,26 +71,36 @@ export default function RegistryManager() {
                     marketValue: Number(form.marketValue),
                 },
             });
-            alert(response.data.message);
-            setForm({ property_id: "", owner: "", propertyType: "", location: "", size: "", marketValue: "" });
+            console.log(response.data.message);
+
+            setForm({
+                property_id: "",
+                owner: "",
+                propertyType: "",
+                location: "",
+                size: "",
+                marketValue: ""
+            });
             setEditMode(false);
-            const updated = await fetch('http://localhost:3000/registrar').then((res) => res.json());
+
+            const updated = await fetch(`http://localhost:3000/registrar`).then((res) => res.json());
             setProperties(updated);
         } catch {
-            alert("Error submitting property.");
+            console.log("Error submitting property.");
         } finally {
             setLoading(false);
         }
     };
 
     const handleEdit = (prop: Property) => {
+        setEditTargetId(prop.id);
         setForm({
-            property_id: prop.property_id,
-            owner: prop.owner,
-            propertyType: prop.propertyType,
-            location: prop.location,
-            size: prop.size.toString(),
-            marketValue: prop.marketValue.toString(),
+            property_id: prop.property_id ?? "",
+            owner: prop.owner ?? "",
+            propertyType: prop.propertyType ?? "",
+            location: prop.location ?? "",
+            size: prop.size !== undefined && prop.size !== null ? prop.size.toString() : "",
+            marketValue: prop.marketValue !== undefined && prop.marketValue !== null ? prop.marketValue.toString() : "",
         });
         setEditMode(true);
     };
@@ -94,25 +109,37 @@ export default function RegistryManager() {
         if (!confirm(`Are you sure you want to delete ${id}?`)) return;
 
         try {
-            const res = await axios.delete(`http://localhost:3000/registrar/${id}`);
-            alert(res.data.message);
+            const deleted = await axios.delete(`http://localhost:3000/registrar/${id}`);
+            console.log(deleted.data.message);
             const updated = await fetch('http://localhost:3000/registrar').then((res) => res.json());
             setProperties(updated);
         } catch {
-            alert("Failed to delete.");
+            console.log("Failed to delete.");
         }
     };
 
     return (
         <>
-            {/*<NavbarReg/>*/}
+            <Navbar />
             <div className="registry-page-container">
                 <div className="registry-page">
                     <h1>{editMode ? "Update Registry" : "Register Property"}</h1>
                     <form className="registry-form" onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label>Property ID</label>
-                            <input name="property_id" value={form.property_id} onChange={handleChange} disabled={editMode} required />
+                            <input
+                                name="property_id"
+                                value={form.property_id}
+                                onChange={handleChange}
+                                disabled={editMode}
+                                required
+                                style={{ backgroundColor: editMode ? "#eee" : undefined }}
+                            />
+                            {editMode && (
+                                <small style={{ color: "gray" }}>
+                                    Property ID is locked during update
+                                </small>
+                            )}
                         </div>
                         <div className="form-group">
                             <label>Owner</label>
@@ -136,14 +163,27 @@ export default function RegistryManager() {
                         </div>
                         {editMode ? (
                             <>
-                                <button type="submit" disabled={loading}>{loading ? "Updating..." : "Save Changes"}</button>
-                                <button type="button" onClick={() => setEditMode(false)}>Cancel</button>
+                                <button type="submit" disabled={loading}>
+                                    {loading ? "Updating..." : "Save Changes"}
+                                </button>
+                                <button type="button" onClick={() => {
+                                    setEditMode(false);
+                                    setForm({
+                                        property_id: "",
+                                        owner: "",
+                                        propertyType: "",
+                                        location: "",
+                                        size: "",
+                                        marketValue: ""
+                                    });
+                                }}>Cancel</button>
                             </>
                         ) : (
-                            <button type="submit" disabled={loading}>{loading ? "Submitting..." : "Register Property"}</button>
+                            <button type="submit" disabled={loading}>
+                                {loading ? "Submitting..." : "Register Property"}
+                            </button>
                         )}
                     </form>
-
                     <table className="registry-table">
                         <thead>
                         <tr>

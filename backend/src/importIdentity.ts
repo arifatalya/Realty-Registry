@@ -6,8 +6,8 @@
 //     const walletPath = path.join(__dirname, '..', 'local_fabric', 'wallet');
 //     const wallet = await Wallets.newFileSystemWallet(walletPath);
 //
-//     const identityLabel = 'Admin@org1.example.com';
-//     const mspId = 'Org1MSP';
+//     const identityLabel = 'User1@org2.example.com';
+//     const mspId = 'Org2MSP';
 //
 //     const certPath = path.resolve(
 //         walletPath,
