@@ -1,7 +1,8 @@
-'use client';
+'use client'
 
 import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import "../styles/RegistryManager.css";
+import {NavbarReg} from "@/components/NavbarReg";
 import axios from "axios";
 
 interface Property {
@@ -103,74 +104,77 @@ export default function RegistryManager() {
     };
 
     return (
-        <div className="registry-page-container">
-            <div className="registry-page">
-                <h1>{editMode ? "Update Registry" : "Register Property"}</h1>
-                <form className="registry-form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label>Property ID</label>
-                        <input name="property_id" value={form.property_id} onChange={handleChange} disabled={editMode} required />
-                    </div>
-                    <div className="form-group">
-                        <label>Owner</label>
-                        <input name="owner" value={form.owner} onChange={handleChange} required />
-                    </div>
-                    <div className="form-group">
-                        <label>Property Type</label>
-                        <input name="propertyType" value={form.propertyType} onChange={handleChange} required />
-                    </div>
-                    <div className="form-group">
-                        <label>Location</label>
-                        <input name="location" value={form.location} onChange={handleChange} required />
-                    </div>
-                    <div className="form-group">
-                        <label>Size</label>
-                        <input name="size" type="number" value={form.size} onChange={handleChange} required />
-                    </div>
-                    <div className="form-group">
-                        <label>Market Value</label>
-                        <input name="marketValue" type="number" value={form.marketValue} onChange={handleChange} required />
-                    </div>
-                    {editMode ? (
-                        <>
-                            <button type="submit" disabled={loading}>{loading ? "Updating..." : "Save Changes"}</button>
-                            <button type="button" onClick={() => setEditMode(false)}>Cancel</button>
-                        </>
-                    ) : (
-                        <button type="submit" disabled={loading}>{loading ? "Submitting..." : "Register Property"}</button>
-                    )}
-                </form>
+        <>
+            {/*<NavbarReg/>*/}
+            <div className="registry-page-container">
+                <div className="registry-page">
+                    <h1>{editMode ? "Update Registry" : "Register Property"}</h1>
+                    <form className="registry-form" onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label>Property ID</label>
+                            <input name="property_id" value={form.property_id} onChange={handleChange} disabled={editMode} required />
+                        </div>
+                        <div className="form-group">
+                            <label>Owner</label>
+                            <input name="owner" value={form.owner} onChange={handleChange} required />
+                        </div>
+                        <div className="form-group">
+                            <label>Property Type</label>
+                            <input name="propertyType" value={form.propertyType} onChange={handleChange} required />
+                        </div>
+                        <div className="form-group">
+                            <label>Location</label>
+                            <input name="location" value={form.location} onChange={handleChange} required />
+                        </div>
+                        <div className="form-group">
+                            <label>Size</label>
+                            <input name="size" type="number" value={form.size} onChange={handleChange} required />
+                        </div>
+                        <div className="form-group">
+                            <label>Market Value</label>
+                            <input name="marketValue" type="number" value={form.marketValue} onChange={handleChange} required />
+                        </div>
+                        {editMode ? (
+                            <>
+                                <button type="submit" disabled={loading}>{loading ? "Updating..." : "Save Changes"}</button>
+                                <button type="button" onClick={() => setEditMode(false)}>Cancel</button>
+                            </>
+                        ) : (
+                            <button type="submit" disabled={loading}>{loading ? "Submitting..." : "Register Property"}</button>
+                        )}
+                    </form>
 
-                <table className="registry-table">
-                    <thead>
-                    <tr>
-                        <th>Owner</th>
-                        <th>Type</th>
-                        <th>Location</th>
-                        <th>Size</th>
-                        <th>Value</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {properties.map((p, i) => (
-                        <tr key={i}>
-                            <td>{p.owner}</td>
-                            <td>{p.propertyType}</td>
-                            <td>{p.location}</td>
-                            <td>{p.size}</td>
-                            <td>Rp {p.marketValue.toLocaleString()}</td>
-                            <td>{p.registrationStatus}</td>
-                            <td>
-                                <button onClick={() => handleEdit(p)}>Edit</button>
-                                <button onClick={() => handleDelete(p.id)}>Delete</button>
-                            </td>
+                    <table className="registry-table">
+                        <thead>
+                        <tr>
+                            <th>Owner</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                            <th>Size</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {properties.map((p, i) => (
+                            <tr key={i}>
+                                <td>{p.owner}</td>
+                                <td>{p.propertyType}</td>
+                                <td>{p.location}</td>
+                                <td>{p.size}</td>
+                                <td>Rp {p.marketValue.toLocaleString()}</td>
+                                <td>{p.registrationStatus}</td>
+                                <td>
+                                    <button onClick={() => handleEdit(p)}>Edit</button>
+                                    <button onClick={() => handleDelete(p.id)}>Delete</button>
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
