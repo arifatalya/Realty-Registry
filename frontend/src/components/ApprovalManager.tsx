@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, ChangeEvent } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import "../styles/ApprovalManager.css";
 
@@ -67,7 +67,6 @@ export default function ApprovalManager() {
                 <table className="approval-table">
                     <thead>
                     <tr>
-                        <th>Property ID</th>
                         <th>Owner</th>
                         <th>Type</th>
                         <th>Location</th>
@@ -80,7 +79,7 @@ export default function ApprovalManager() {
                     <tbody>
                     {properties.map(p => (
                         <tr key={p.id}>
-                            <td>{p.property_id}</td>
+                            {/*<td>{p.property_id}</td>*/}
                             <td>{p.owner}</td>
                             <td>{p.propertyType}</td>
                             <td>{p.location}</td>

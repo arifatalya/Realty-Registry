@@ -203,7 +203,19 @@ export default function RegistryManager() {
                                 <td>{p.location}</td>
                                 <td>{p.size}</td>
                                 <td>Rp {p.marketValue.toLocaleString()}</td>
-                                <td>{p.registrationStatus}</td>
+                                <td>
+                                    <span
+                                        className={`status-badge ${
+                                            p.registrationStatus === "Pending"
+                                                ? "status-pending"
+                                                : p.registrationStatus === "Registered"
+                                                    ? "status-registered"
+                                                    : ""
+                                        }`}
+                                    >
+                                        {p.registrationStatus}
+                                    </span>
+                                </td>
                                 <td>
                                     <button onClick={() => handleEdit(p)}>Edit</button>
                                     <button onClick={() => handleDelete(p.id)}>Delete</button>

@@ -1,19 +1,19 @@
 .registry-page-container {
     position: fixed;
     top: 0;
-    left: 0;
-    margin-top: 180px;
+    margin-top: 140px;
     padding: 40px 20px;
     width: 100%;
+    min-width: 50vh;
     height: 100vh;
-    background-color: #00000090;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url(../assets/banner.png);
+    background-color: #e6e6e6;
+    /*background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url(../assets/banner.png);*/
     background-size: cover;
-    background-position: center;
-    overflow-y: auto; /* allow scroll if content exceeds height */
+    /*background-position: center;*/
+    overflow-y: auto;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     z-index: 1;
 }
 
@@ -22,10 +22,11 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 960px;
+    padding: 20px;
+    margin: 0 0 100px 0;
+    max-width: 1200px;
     gap: 40px;
     background-color: #000000;
-    padding: 40px;
     border-radius: 8px;
 }
 
@@ -97,10 +98,10 @@
 .registry-table {
     width: 100%;
     background-color: #fff;
-    border-radius: 6px;
+    border-radius: 8px;
     overflow-x: auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-collapse: collapse;
+    /*border-collapse: collapse;*/
 }
 
 .registry-table th,
@@ -121,7 +122,8 @@
 }
 
 .registry-table button {
-    margin-right: 8px;
+    margin: 0 8px 10px 0;
+    width: 80px;
     padding: 6px 12px;
     font-size: 0.9rem;
     background-color: #121111;
@@ -134,6 +136,25 @@
 
 .registry-table button:hover {
     background-color: #808083;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+    text-align: center;
+}
+
+.status-pending {
+    background-color: #fff7d6;
+    color: #b68400;
+}
+
+.status-registered {
+    background-color: #cdffb0;
+    color: #41a836;
 }
 
 @media (max-width: 768px) {

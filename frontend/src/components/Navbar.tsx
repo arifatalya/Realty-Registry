@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import arrowRight from "@/assets/arrow-right.svg";
-import PlaceholderWhite from "@/assets/placeholder.svg";
+import Placeholder from "@/assets/placeholder.svg";
 import Link from "next/link";
 
 export const Navbar = () => {
@@ -21,14 +21,15 @@ export const Navbar = () => {
             <div className="py-5 bg-white text-black">
                 <div className="max-w-screen-xl mx-auto px-4">
                     <div className="flex items-center justify-between">
-                        <Link href="/" className="md:block">
-                            <Image src={PlaceholderWhite} alt="Logo" width={40} height={40} />
+                        <Link href="/" className="flex items-center gap-4">
+                            <Image src={Placeholder} alt="Logo" width={40} height={40} />
+                            <span className="text-xl font-extrabold hidden md:inline">Realty Registry</span>
                         </Link>
                         <Link href="/" className="md:hidden">
-                            <Image src={PlaceholderWhite} alt="Logo mobile" width={20} height={20} className="md:hidden" />
+                            <Image src={Placeholder} alt="Logo mobile" width={20} height={20} className="md:hidden" />
                         </Link>
                         <nav className="flex gap-10 items-center">
-                            <Link href="/">Property</Link>
+                            <Link href="/">Properties</Link>
                             <Link href="/registry-manager">Registry Manager</Link>
                             <Link href="/approval-manager">Approval Manager</Link>
                         </nav>
