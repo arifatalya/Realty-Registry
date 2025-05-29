@@ -2,7 +2,6 @@
 
 import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import "../styles/RegistryManager.css";
-import { Navbar } from "@/components/Navbar";
 import axios from "axios";
 
 interface Property {
@@ -120,11 +119,11 @@ export default function RegistryManager() {
 
     return (
         <>
-            <Navbar />
             <div className="registry-page-container">
                 <div className="registry-page">
-                    <h1>{editMode ? "Update Registry" : "Register Property"}</h1>
+                    {/*<h1>{editMode ? "Update Registry" : "Register Property"}</h1>*/}
                     <form className="registry-form" onSubmit={handleSubmit}>
+                        <h1>{editMode ? "Update Registry" : "Register Property"}</h1>
                         <div className="form-group">
                             <label>Property ID</label>
                             <input

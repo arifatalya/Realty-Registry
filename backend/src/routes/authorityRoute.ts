@@ -4,8 +4,8 @@ import {getAllProperties, getPropertyById, transferProperty, approveRegistration
 const authorityRouter = express.Router();
 
 authorityRouter.get("/", getAllProperties);
-authorityRouter.get('/:id', getPropertyById);
-authorityRouter.post('/:id/transfer', transferProperty);
-authorityRouter.post('/:id/approve', approveRegistration);
+authorityRouter.put('/:property_id/transfer', transferProperty);
+authorityRouter.post('/:property_id/approve', approveRegistration);
+authorityRouter.get('/:property_id', getPropertyById);
 
 export default authorityRouter;

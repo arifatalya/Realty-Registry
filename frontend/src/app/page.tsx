@@ -1,12 +1,14 @@
-import Image from "next/image";
-import {NavbarReg} from "@/components/NavbarReg";
+import {Navbar} from "@/components/Navbar";
 import PropertyTable from "@/components/PropertyTable"
 
 export default function Home() {
   return (
       <>
-        <NavbarReg/>
-        <PropertyTable/>
+        <Navbar/>
+          <div className="mt-20">
+              <PropertyTable/>
+          </div>
+
       </>
 
   );

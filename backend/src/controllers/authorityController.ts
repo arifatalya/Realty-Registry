@@ -14,7 +14,7 @@ const getAllProperties = async(req: Request, res: Response) => {
 }
 
 const getPropertyById = async (req: Request, res: Response) => {
-    const property_id = req.params.id;
+    const property_id = req.params.property_id;
     try {
         const {contract, gateway} = await getContract();
         const result = await contract.evaluateTransaction('ReadProperty', property_id);
@@ -27,24 +27,25 @@ const getPropertyById = async (req: Request, res: Response) => {
 }
 
 const transferProperty = async (req: Request, res: Response) => {
-    const property_id = req.params.id;
+    const property_id = req.params.property_id;
     const {newOwner} = req.body;
+
     try {
-        const {contract, gateway} = await getContract();
-        await contract.submitTransaction('ApproveRegistration', property_id, newOwner);
+        const { contract, gateway } = await getContract();
+        await contract.submitTransaction('TransferProperty', property_id, newOwner);
         gateway.disconnect();
 
         res.json({
-            message: `Property ${property_id} has been transferred to ${newOwner}`
-        })
+            message: `Property ${property_id} has been transferred to ${newOwner}`,
+        });
     } catch (error: any) {
         console.error("Error occurred: ", error);
-        res.status(500).send({error: error.message});
+        res.status(500).send({ error: error.message });
     }
 }
 
 const approveRegistration = async (req: Request, res: Response) => {
-    const property_id = req.params.id;
+    const property_id = req.params.property_id;
     try {
         const {contract, gateway} = await getContract();
         await contract.submitTransaction('ApproveRegistration', property_id);

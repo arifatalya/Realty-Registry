@@ -1,0 +1,88 @@
+.approval-page-container {
+    padding: 80px 40px 40px 40px;
+    background: #f2f2f3;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.approval-page {
+    width: 100%;
+    max-width: 1500px;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.approval-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+}
+
+.approval-table th,
+.approval-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.approval-table th {
+    color: #333333;
+    font-weight: 600;
+    background-color: #f0f0f0;
+}
+
+.approval-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-registered {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.action-buttons input {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.action-buttons button {
+    padding: 8px;
+    font-size: 0.85rem;
+    background-color: #1f2937;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.action-buttons button:hover {
+    background-color: #374151;
+}

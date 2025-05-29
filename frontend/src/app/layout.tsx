@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="relative">
-      <body className={twMerge(geistSans.className, geistMono.className, "antialiased bg-gray-100 dark:bg-gray-900")}>
+      <body className={twMerge(geistSans.className, geistMono.className, "antialiased bg-white dark:bg-gray-900")}>
         {children}
       </body>
     </html>
